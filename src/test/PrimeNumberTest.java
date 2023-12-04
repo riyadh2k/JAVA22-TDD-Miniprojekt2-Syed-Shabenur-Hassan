@@ -58,13 +58,13 @@ class PrimeNumberTest {
     }
 
     @Test
-    @DisplayName("Test Upper Boundary Condition")
-    void testUpperBoundary() {
-        PrimeNumber upperBoundaryPrime = new PrimeNumber(1000, 1000);
-        int count = upperBoundaryPrime.getCount();
-        int sum = upperBoundaryPrime.getSumOfPrimes();
-        assertTrue(count == 0 || count == 1, "Count should be 0 or 1 for range 1000 to 1000 (inclusive of 1000 if considered prime)");
-        assertTrue(sum == 0 || sum == 1000, "Sum should be 0 or 1000 for range 1000 to 1000 (inclusive of 1000 if considered prime)");
+    @DisplayName("Test Upper Boundary Range")
+    void upperBoundaryTest() {
+        PrimeNumber primeNumber = new PrimeNumber(997, 1000);
+        assertAll(
+            () -> assertFalse(primeNumber.getPrimes().isEmpty(), "There should be primes between 997 and 1000"),
+            () -> assertTrue(primeNumber.getPrimes().contains(997), "997 should be in the prime list")
+        );
     }
 
     @Test
